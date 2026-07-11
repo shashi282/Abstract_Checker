@@ -13,7 +13,7 @@ from flask import Flask, render_template, request, jsonify
 # ---------------------------------------------------------------------------
 # Configuration — do NOT modify the API key or URL below
 # ---------------------------------------------------------------------------
-API_KEY = "sk-94nP3N86lMVXHrrje6w4tW0xPW3rtVvaWrVMa83BVj4"
+API_KEY = "sk-"
 FLOW_URL = "http://localhost:7860/api/v1/run/1047e8f8-091b-4ce5-82b5-c749577bc1cb"
 
 HEADERS = {"x-api-key": API_KEY}
