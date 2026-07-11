@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AbstractAI — AI-Powered Research Abstract Quality Checker</title>
+  <meta name="description" content="Instantly evaluate your research abstract's structure, clarity, completeness, and publication readiness using IBM Granite AI." />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  STICKY NAV                                          ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner container-xl">
+    <a class="nav-brand" href="#home" aria-label="AbstractAI Home">
+      <svg class="brand-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="10" fill="url(#brandGrad)"/>
+        <defs>
+          <linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2563eb"/>
+            <stop offset="1" stop-color="#1d4ed8"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 30 L20 10 L30 30" stroke="white" stroke-width="2.8" stroke-linejoin="round" fill="none"/>
+        <path d="M13.5 23.5 H26.5" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="20" cy="10" r="2" fill="white"/>
+      </svg>
+      <span class="brand-name">AbstractAI</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#features"    class="nav-link">Features</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#checker"     class="nav-link">Try It</a>
+      <a href="#faq"         class="nav-link">FAQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <a href="#checker" class="btn-nav-cta">Try Free</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  HERO                                                ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container-xl hero-inner">
+
+    <div class="hero-copy">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        Powered by IBM Granite AI
+      </div>
+      <h1 class="hero-title">
+        Evaluate Research<br>
+        <span class="hero-gradient-text">Abstracts Instantly</span>
+      </h1>
+      <p class="hero-subtitle">
+        Submit your research abstract and receive a comprehensive AI-driven quality
+        report — scoring structure, clarity, completeness, novelty, and publication
+        readiness in seconds.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#checker" class="btn-primary btn-lg">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Analyse My Abstract
+        </a>
+        <a href="#how-it-works" class="btn-ghost btn-lg">
+          See How It Works
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-badge">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L10 6h5l-4 3 1.5 5L8 12l-4.5 3L5 10 1 7h5z" fill="currentColor"/></svg>
+          6 Quality Dimensions
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          5 Component Detection
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          PDF Export
+        </span>
+      </div>
+    </div>
+
+    <!-- Hero illustration -->
+    <div class="hero-illustration" aria-hidden="true">
+      <div class="illus-card illus-card--main">
+        <div class="illus-header">
+          <div class="illus-dots"><span></span><span></span><span></span></div>
+          <span class="illus-tag">Abstract Evaluation</span>
+        </div>
+        <div class="illus-score-row">
+          <div class="illus-score-item">
+            <span class="illus-score-label">Structure</span>
+            <div class="illus-bar-track"><div class="illus-bar-fill" style="width:88%"></div></div>
+            <span class="illus-score-val">88</span>
+          </div>
+          <div class="illus-score-item">
+            <span class="illus-score-label">Clarity</span>
+            <div class="illus-bar-track"><div class="illus-bar-fill illus-bar--amber" style="width:72%"></div></div>
+            <span class="illus-score-val">72</span>
+          </div>
+          <div class="illus-score-item">
+            <span class="illus-score-label">Novelty</span>
+            <div class="illus-bar-track"><div class="illus-bar-fill" style="width:91%"></div></div>
+            <span class="illus-score-val">91</span>
+          </div>
+          <div class="illus-score-item">
+            <span class="illus-score-label">Pub. Readiness</span>
+            <div class="illus-bar-track"><div class="illus-bar-fill illus-bar--amber" style="width:65%"></div></div>
+            <span class="illus-score-val">65</span>
+          </div>
+        </div>
+        <div class="illus-components">
+          <span class="illus-comp present">✓ Background</span>
+          <span class="illus-comp present">✓ Objective</span>
+          <span class="illus-comp present">✓ Methodology</span>
+          <span class="illus-comp absent">✗ Results</span>
+          <span class="illus-comp present">✓ Conclusion</span>
+        </div>
+      </div>
+      <div class="illus-card illus-card--float illus-card--float-1">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#22c55e" stroke-width="1.8"/></svg>
+        <span>Structured Abstract</span>
+      </div>
+      <div class="illus-card illus-card--float illus-card--float-2">
+        <span class="illus-avg-label">Avg Score</span>
+        <span class="illus-avg-val">84</span>
+        <span class="illus-avg-sub">/100</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Stats strip -->
+  <div class="hero-stats-strip">
+    <div class="container-xl stats-strip-inner">
+      <div class="stat-chip"><strong>6</strong> Quality Metrics</div>
+      <div class="stat-sep"></div>
+      <div class="stat-chip"><strong>5</strong> Components Tracked</div>
+      <div class="stat-sep"></div>
+      <div class="stat-chip"><strong>AI</strong> Recommendations</div>
+      <div class="stat-sep"></div>
+      <div class="stat-chip"><strong>PDF</strong> Export</div>
+      <div class="stat-sep"></div>
+      <div class="stat-chip"><strong>Dark</strong> Mode</div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  FEATURES                                            ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section" id="features">
+  <div class="container-xl">
+    <div class="section-header">
+      <span class="section-eyebrow">What You Get</span>
+      <h2 class="section-title">Everything you need to publish<br>with confidence</h2>
+      <p class="section-sub">AbstractAI delivers a multi-dimensional quality report so you know exactly where to improve before submission.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card" data-reveal>
+        <div class="feat-icon feat-icon--blue">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="feat-title">Structure Detection</h3>
+        <p class="feat-desc">Automatically identifies Background, Objective, Methodology, Results, and Conclusion in both structured and unstructured abstracts.</p>
+      </div>
+      <div class="feat-card" data-reveal>
+        <div class="feat-icon feat-icon--purple">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="feat-title">6-Dimension Scoring</h3>
+        <p class="feat-desc">Scores across Structure, Clarity, Completeness, Technical Depth, Novelty, and Publication Readiness — each from 0–100.</p>
+      </div>
+      <div class="feat-card" data-reveal>
+        <div class="feat-icon feat-icon--green">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="feat-title">Instant AI Feedback</h3>
+        <p class="feat-desc">IBM Granite generates specific, actionable recommendations and highlights both strengths and improvement areas in plain language.</p>
+      </div>
+      <div class="feat-card" data-reveal>
+        <div class="feat-icon feat-icon--amber">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="feat-title">PDF Report Export</h3>
+        <p class="feat-desc">Download a formatted evaluation report as a PDF for sharing with supervisors, co-authors, or journal editors.</p>
+      </div>
+      <div class="feat-card" data-reveal>
+        <div class="feat-icon feat-icon--rose">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="feat-title">Dark Mode</h3>
+        <p class="feat-desc">Comfortable reading in any environment. Toggle between light and dark mode with a single click, with preference saved locally.</p>
+      </div>
+      <div class="feat-card" data-reveal>
+        <div class="feat-icon feat-icon--teal">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="feat-title">Fully Responsive</h3>
+        <p class="feat-desc">Optimised for desktop, tablet, and mobile. Review your abstract evaluation on any device, anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  HOW IT WORKS                                        ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section section--alt" id="how-it-works">
+  <div class="container-xl">
+    <div class="section-header">
+      <span class="section-eyebrow">Process</span>
+      <h2 class="section-title">Four steps to a publication-ready abstract</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card" data-reveal>
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="3" stroke="currentColor" stroke-width="2"/><path d="M10 12h12M10 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="step-title">Paste Abstract</h3>
+        <p class="step-desc">Copy your research abstract — structured or unstructured — and paste it into the evaluation editor.</p>
+      </div>
+      <div class="step-connector" aria-hidden="true">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/><path d="M16 10v6l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="step-title">AI Processing</h3>
+        <p class="step-desc">IBM Granite analyses the text across six quality dimensions, detects components, and composes recommendations.</p>
+      </div>
+      <div class="step-connector" aria-hidden="true">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M6 16l6 6L26 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="step-title">Review Dashboard</h3>
+        <p class="step-desc">Explore the interactive results dashboard: scores, component badges, strengths, weaknesses, and recommendations.</p>
+      </div>
+      <div class="step-connector" aria-hidden="true">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-number">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 4v16M8 14l8 8 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 26h20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="step-title">Export PDF</h3>
+        <p class="step-desc">Download a complete evaluation report as a PDF to share with co-authors, supervisors, or journal editors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  WHY CHOOSE THIS TOOL                                ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section" id="why">
+  <div class="container-xl why-inner">
+    <div class="why-copy" data-reveal>
+      <span class="section-eyebrow">Why AbstractAI</span>
+      <h2 class="section-title left">Built for researchers,<br>not just readers</h2>
+      <p class="section-sub left">Most abstract evaluation tools give a simple readability score. AbstractAI goes further — providing domain-aware, multi-dimensional feedback that maps directly to what journal editors look for.</p>
+      <ul class="why-list">
+        <li><span class="why-check">✓</span> IBM Granite large language model — not a keyword matcher</li>
+        <li><span class="why-check">✓</span> Scores each dimension independently with 0–100 granularity</li>
+        <li><span class="why-check">✓</span> Detects both structured (IMRAD) and narrative abstracts</li>
+        <li><span class="why-check">✓</span> Generates genuinely actionable, contextual recommendations</li>
+        <li><span class="why-check">✓</span> Works offline-ready — your abstract never leaves your server</li>
+        <li><span class="why-check">✓</span> Open-source friendly — no subscription or sign-up required</li>
+      </ul>
+    </div>
+    <div class="why-visual" aria-hidden="true" data-reveal>
+      <div class="why-chart">
+        <div class="why-chart-title">Sample Score Breakdown</div>
+        <div class="why-bar-list">
+          <div class="why-bar-row"><span>Structure</span><div class="why-bar-track"><div class="why-bar-fill" style="width:88%">88</div></div></div>
+          <div class="why-bar-row"><span>Clarity</span><div class="why-bar-track"><div class="why-bar-fill" style="width:72%">72</div></div></div>
+          <div class="why-bar-row"><span>Completeness</span><div class="why-bar-track"><div class="why-bar-fill" style="width:95%">95</div></div></div>
+          <div class="why-bar-row"><span>Technical Depth</span><div class="why-bar-track"><div class="why-bar-fill why-bar--amber" style="width:61%">61</div></div></div>
+          <div class="why-bar-row"><span>Novelty</span><div class="why-bar-track"><div class="why-bar-fill" style="width:83%">83</div></div></div>
+          <div class="why-bar-row"><span>Pub. Readiness</span><div class="why-bar-track"><div class="why-bar-fill why-bar--amber" style="width:67%">67</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  TECHNOLOGY STACK                                    ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section section--alt" id="tech">
+  <div class="container-xl">
+    <div class="section-header">
+      <span class="section-eyebrow">Technology</span>
+      <h2 class="section-title">Built on proven infrastructure</h2>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card" data-reveal>
+        <div class="tech-logo tech-logo--ibm">
+          <svg viewBox="0 0 48 24" fill="none"><text x="0" y="20" font-size="20" font-weight="900" fill="currentColor" font-family="Arial,sans-serif">IBM</text></svg>
+        </div>
+        <h4 class="tech-name">IBM Granite</h4>
+        <p class="tech-desc">Enterprise-grade large language model optimised for technical and scientific text understanding.</p>
+        <span class="tech-tag">Core AI Engine</span>
+      </div>
+      <div class="tech-card" data-reveal>
+        <div class="tech-logo tech-logo--langflow">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3"/><path d="M16 24l8-8 8 8M24 32V16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="tech-name">LangFlow</h4>
+        <p class="tech-desc">Visual LLM orchestration platform that manages the AI flow and API routing with low-latency pipelines.</p>
+        <span class="tech-tag">AI Orchestration</span>
+      </div>
+      <div class="tech-card" data-reveal>
+        <div class="tech-logo tech-logo--flask">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M20 8l-4 20 8 10 8-10-4-20z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M16 18h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4 class="tech-name">Flask</h4>
+        <p class="tech-desc">Lightweight Python web framework powering the backend REST API and template rendering layer.</p>
+        <span class="tech-tag">Web Backend</span>
+      </div>
+      <div class="tech-card" data-reveal>
+        <div class="tech-logo tech-logo--js">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2.5"/><text x="14" y="33" font-size="18" font-weight="700" fill="currentColor" font-family="monospace">JS</text></svg>
+        </div>
+        <h4 class="tech-name">Vanilla JS</h4>
+        <p class="tech-desc">Zero-dependency frontend with modern ES6+ for fast loading, accessible interactivity, and smooth animations.</p>
+        <span class="tech-tag">Frontend</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  CHECKER (INPUT + RESULTS)                           ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section checker-section" id="checker">
+  <div class="container-xl">
+    <div class="section-header">
+      <span class="section-eyebrow">Live Tool</span>
+      <h2 class="section-title">Try the Abstract Checker now</h2>
+      <p class="section-sub">Paste any research abstract below and click <strong>Evaluate</strong>. Results appear in the dashboard below.</p>
+    </div>
+
+    <!-- Input card -->
+    <div class="input-card" id="inputCard">
+      <div class="input-card-header">
+        <div class="input-card-title-row">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 4h12M4 8h12M4 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3 class="input-card-title">Your Research Abstract</h3>
+        </div>
+        <span class="char-counter" id="charCounter">0 characters</span>
+      </div>
+
+      <textarea
+        id="abstractInput"
+        class="abstract-textarea"
+        placeholder="Paste your research abstract here…&#10;&#10;Example:&#10;Background: This study investigates…&#10;Objective: We aim to…&#10;Methods: We applied…&#10;Results: Our findings show…&#10;Conclusion: These results indicate…"
+        rows="11"
+        spellcheck="true"
+        aria-label="Research abstract input"
+      ></textarea>
+
+      <div class="input-card-footer">
+        <p class="input-hint">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v5M8 5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Minimum 50 characters · Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to submit
+        </p>
+        <button class="btn-primary btn-evaluate" id="evaluateBtn" onclick="evaluateAbstract()">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M9.663 17h4.673M12 3v1M6.344 6.344l-.707-.707M4 12H3M21 12h-1M16.95 7.05l.707-.707M18.364 18.364A9 9 0 115.636 5.636a9 9 0 0112.728 12.728z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="btn-evaluate-text">Evaluate Abstract</span>
+        </button>
+      </div>
+      <div class="validation-error hidden" id="validationError" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- ── LOADING ── -->
+    <div class="loading-panel hidden" id="loadingOverlay" role="status" aria-live="polite">
+      <div class="loading-inner">
+        <div class="ai-spinner" aria-hidden="true">
+          <div class="ai-spinner-orbit"></div>
+          <div class="ai-spinner-orbit ai-spinner-orbit--2"></div>
+          <div class="ai-spinner-core">AI</div>
+        </div>
+        <p class="loading-title">IBM Granite is analysing your abstract…</p>
+        <div class="loading-steps-row">
+          <div class="lstep" id="step1">
+            <div class="lstep-dot"></div>
+            <span>Parsing structure</span>
+          </div>
+          <div class="lstep" id="step2">
+            <div class="lstep-dot"></div>
+            <span>Scoring dimensions</span>
+          </div>
+          <div class="lstep" id="step3">
+            <div class="lstep-dot"></div>
+            <span>Generating insights</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RESULTS DASHBOARD ── -->
+    <section class="dashboard hidden" id="resultsSection" aria-live="polite">
+
+      <!-- Dashboard topbar -->
+      <div class="dash-topbar">
+        <div class="dash-topbar-left">
+          <div class="dash-status-dot"></div>
+          <span class="dash-title">Evaluation Report</span>
+          <span class="dash-subtitle" id="resultsSubtitle"></span>
+        </div>
+        <div class="dash-topbar-actions">
+          <button class="btn-icon-action" id="downloadPdfBtn" onclick="downloadPDF()" title="Download PDF report">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2v10M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15v1a2 2 0 002 2h10a2 2 0 002-2v-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            PDF
+          </button>
+          <button class="btn-icon-action btn-icon-action--ghost" onclick="resetForm()" title="New evaluation">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 4l12 12M4 16L16 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            New
+          </button>
+        </div>
+      </div>
+
+      <!-- Row A: Type + Components + Overall Score -->
+      <div class="dash-row-a">
+
+        <div class="dash-card dash-card--type" id="cardType">
+          <div class="dash-card-label">Abstract Type</div>
+          <div class="type-badge-wrap" id="abstractTypeBadge"></div>
+          <p class="dash-card-desc" id="typeDescription"></p>
+        </div>
+
+        <div class="dash-card dash-card--components">
+          <div class="dash-card-label">Detected Components</div>
+          <ul class="component-list" id="componentList"></ul>
+        </div>
+
+        <div class="dash-card dash-card--overall">
+          <div class="dash-card-label">Overall Score</div>
+          <div class="radial-score-wrap">
+            <svg class="radial-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="radial-track" cx="50" cy="50" r="38" stroke-width="9" fill="none"/>
+              <circle class="radial-fill" id="radialFill" cx="50" cy="50" r="38" stroke-width="9" fill="none"
+                stroke-dasharray="238.76" stroke-dashoffset="238.76"
+                stroke-linecap="round" transform="rotate(-90 50 50)"/>
+            </svg>
+            <div class="radial-label">
+              <span class="radial-number" id="radialNumber">—</span>
+              <span class="radial-sub">/100</span>
+            </div>
+          </div>
+          <div class="overall-grade" id="overallGrade"></div>
+        </div>
+
+      </div>
+
+      <!-- Row B: Quality Scores -->
+      <div class="dash-card dash-card--scores">
+        <div class="dash-card-label-row">
+          <div class="dash-card-label">Quality Scores</div>
+          <button class="expand-toggle" data-target="scoresBody" aria-expanded="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="expandable open" id="scoresBody">
+          <div class="scores-grid" id="scoresGrid"></div>
+        </div>
+      </div>
+
+      <!-- Row C: Overall Assessment -->
+      <div class="dash-card dash-card--assessment">
+        <div class="dash-card-label-row">
+          <div class="dash-card-label">Overall Assessment</div>
+          <button class="expand-toggle" data-target="assessmentBody" aria-expanded="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="expandable open" id="assessmentBody">
+          <p class="assessment-text" id="overallAssessment"></p>
+        </div>
+      </div>
+
+      <!-- Row D: Strengths + Weaknesses -->
+      <div class="dash-row-sw">
+
+        <div class="dash-card dash-card--strengths">
+          <div class="dash-card-label-row">
+            <div class="dash-card-label dash-card-label--green">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Strengths
+            </div>
+            <button class="expand-toggle" data-target="strengthsBody" aria-expanded="true">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="expandable open" id="strengthsBody">
+            <ul class="feedback-list feedback-list--strengths" id="strengthsList"></ul>
+          </div>
+        </div>
+
+        <div class="dash-card dash-card--weaknesses">
+          <div class="dash-card-label-row">
+            <div class="dash-card-label dash-card-label--red">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Weaknesses
+            </div>
+            <button class="expand-toggle" data-target="weaknessesBody" aria-expanded="true">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="expandable open" id="weaknessesBody">
+            <ul class="feedback-list feedback-list--weaknesses" id="weaknessesList"></ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Row E: Recommendations -->
+      <div class="dash-card dash-card--recommendations">
+        <div class="dash-card-label-row">
+          <div class="dash-card-label dash-card-label--blue">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Actionable Recommendations
+          </div>
+          <button class="expand-toggle" data-target="recsBody" aria-expanded="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="expandable open" id="recsBody">
+          <ol class="recommendations-list" id="recommendationsList"></ol>
+        </div>
+      </div>
+
+    </section><!-- /dashboard -->
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  SAMPLE EVALUATION PREVIEW                           ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section section--alt" id="sample">
+  <div class="container-xl">
+    <div class="section-header">
+      <span class="section-eyebrow">Example Output</span>
+      <h2 class="section-title">What a full evaluation looks like</h2>
+    </div>
+    <div class="sample-preview">
+      <div class="sample-col">
+        <div class="sample-label">Input Abstract</div>
+        <div class="sample-abstract-box">
+          <p><strong>Background:</strong> Machine learning has transformed biomedical image analysis, yet annotation bottlenecks limit model performance.</p>
+          <p><strong>Objective:</strong> We propose a semi-supervised framework leveraging unlabelled MRI scans to improve tumour segmentation accuracy.</p>
+          <p><strong>Methods:</strong> We applied consistency regularisation with data augmentation across 1,200 glioma MRI volumes, comparing against three baselines.</p>
+          <p><strong>Results:</strong> Our model achieved a Dice score of 0.89, outperforming supervised-only training by 6.2 percentage points.</p>
+          <p><strong>Conclusion:</strong> Semi-supervised learning significantly reduces annotation requirements while maintaining competitive segmentation performance.</p>
+        </div>
+      </div>
+      <div class="sample-col">
+        <div class="sample-label">AI Evaluation Output</div>
+        <div class="sample-output">
+          <div class="sample-row">
+            <span class="sample-key">Type</span>
+            <span class="sample-val sample-badge sample-badge--green">Structured</span>
+          </div>
+          <div class="sample-scores-mini">
+            <div class="smini-row"><span>Structure</span><div class="smini-track"><div class="smini-fill" style="width:95%"></div></div><b>95</b></div>
+            <div class="smini-row"><span>Clarity</span><div class="smini-track"><div class="smini-fill" style="width:90%"></div></div><b>90</b></div>
+            <div class="smini-row"><span>Completeness</span><div class="smini-track"><div class="smini-fill" style="width:100%"></div></div><b>100</b></div>
+            <div class="smini-row"><span>Tech. Depth</span><div class="smini-track"><div class="smini-fill" style="width:85%"></div></div><b>85</b></div>
+            <div class="smini-row"><span>Novelty</span><div class="smini-track"><div class="smini-fill" style="width:80%"></div></div><b>80</b></div>
+            <div class="smini-row"><span>Pub. Readiness</span><div class="smini-track"><div class="smini-fill" style="width:88%"></div></div><b>88</b></div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-key">Avg Score</span>
+            <span class="sample-val"><strong>90</strong>/100</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-key">Recommendation</span>
+            <span class="sample-val sample-rec">Consider adding confidence intervals to the quantitative results for stronger statistical reporting.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  FAQ                                                 ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<section class="section" id="faq">
+  <div class="container-xl">
+    <div class="section-header">
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="section-title">Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" data-reveal>
+        <button class="faq-question" aria-expanded="false">
+          What types of abstracts does AbstractAI support?
+          <svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">AbstractAI supports both <strong>structured abstracts</strong> (IMRAD format with explicit section labels like Background, Methods, Results) and <strong>unstructured abstracts</strong> (continuous prose). The AI automatically detects the format and adapts its analysis accordingly.</div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-question" aria-expanded="false">
+          How are the quality scores calculated?
+          <svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">Scores are generated by IBM Granite based on a detailed evaluation prompt that instructs the model to assess each dimension (Structure, Clarity, Completeness, Technical Depth, Novelty, Publication Readiness) on a 0–100 scale, following academic publishing standards.</div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-question" aria-expanded="false">
+          Is my abstract stored or shared?
+          <svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">No. Your abstract is sent only to the local LangFlow server running on your machine (localhost:7860). Nothing is stored in a database or transmitted to external third-party services. Each session uses a unique UUID to prevent cross-session data mixing.</div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-question" aria-expanded="false">
+          What is the minimum abstract length?
+          <svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">The tool requires at least 50 characters to proceed. In practice, meaningful evaluation requires a full abstract — typically 150–300 words. Very short inputs may yield generic feedback.</div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-question" aria-expanded="false">
+          How do I set up the LangFlow backend?
+          <svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">Install LangFlow (<code>pip install langflow</code>), run <code>langflow run</code>, then import your IBM Granite flow. Ensure the flow URL and API key in <code>app.py</code> match your configuration. Start this Flask app with <code>python app.py</code>.</div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-question" aria-expanded="false">
+          Can I export the results?
+          <svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">Yes. Click the <strong>PDF</strong> button in the evaluation dashboard header to download a formatted report of the full evaluation, including scores, components, strengths, weaknesses, and recommendations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main><!-- /main -->
+
+<!-- ╔══════════════════════════════════════════════════════╗ -->
+<!-- ║  FOOTER                                              ║ -->
+<!-- ╚══════════════════════════════════════════════════════╝ -->
+<footer class="site-footer">
+  <div class="container-xl footer-inner">
+    <div class="footer-brand">
+      <svg class="brand-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="10" fill="#2563eb"/>
+        <path d="M10 30 L20 10 L30 30" stroke="white" stroke-width="2.8" stroke-linejoin="round" fill="none"/>
+        <path d="M13.5 23.5 H26.5" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="20" cy="10" r="2" fill="white"/>
+      </svg>
+      <div>
+        <div class="footer-brand-name">AbstractAI</div>
+        <div class="footer-brand-sub">AI-Powered Research Abstract Evaluator</div>
+      </div>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Documentation</div>
+      <a href="#how-it-works" class="footer-link">How It Works</a>
+      <a href="#faq" class="footer-link">FAQ</a>
+      <a href="#features" class="footer-link">Features</a>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Resources</div>
+      <a href="#" class="footer-link" id="readmeLink">README.md</a>
+      <a href="#tech" class="footer-link">Tech Stack</a>
+      <a href="#checker" class="footer-link">Try the Tool</a>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Powered by</div>
+      <span class="footer-tech-badge">IBM Granite</span>
+      <span class="footer-tech-badge">LangFlow</span>
+      <span class="footer-tech-badge">Flask</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container-xl footer-bottom-inner">
+      <span>© 2024 AbstractAI — All rights reserved</span>
+      <span class="footer-bottom-right">Built with IBM Granite · LangFlow · Flask · Vanilla JS</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Error toast -->
+<div class="toast-error hidden" id="errorBanner" role="alert" aria-live="assertive">
+  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/><path d="M10 6v5M10 13v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <span id="errorMessage"></span>
+  <button onclick="dismissError()" aria-label="Dismiss">×</button>
+</div>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>
